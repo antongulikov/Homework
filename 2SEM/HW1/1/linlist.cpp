@@ -8,19 +8,19 @@ LinList::LinList() : head(NULL), last(NULL)
 }
 
 void LinList :: push(int value){
-    if (head == NULL){
-            ListElement *tmp = new ListElement();
-            tmp->value = value;
-            tmp->next = NULL;
-            head = tmp;
-            last = head;
-    } else{
+	if (head == NULL){
 		ListElement *tmp = new ListElement();
-        tmp->value = value;
-        tmp->next = NULL;            
+		tmp->value = value;
+		tmp->next = NULL;
+		head = tmp;
+		last = head;
+	    } else{
+		ListElement *tmp = new ListElement();
+		tmp->value = value;
+		tmp->next = NULL;            
 		last->next = tmp;
 		last = tmp;
-    }
+	    }
 }
 
 void LinList :: pop(int value){
@@ -28,7 +28,7 @@ void LinList :: pop(int value){
 	ListElement *prev = NULL;
 	while (tmp != NULL){
 		if (tmp->value == value && prev == NULL){
-			head = head->next;
+			head = head->next;	
 			delete tmp;
 			return;
 		}

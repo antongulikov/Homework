@@ -3,20 +3,20 @@
 
 class LinList : public List
 {
-    public:
-        LinList();
-        ~LinList();
-        void push(int value);
-        void pop(int value);
-        bool find(int value);
-        void print();
-        int size();
+	public:
+	        LinList();
+	        ~LinList();
+		void push(int value);
+		void pop(int value);
+		bool find(int value);
+		void print();
+		int size();
     
-    private :
+	private :
     
 		struct ListElement {
-				int value;
-				ListElement *next;
+			int value;
+			ListElement *next;
 		};	
 	
 		ListElement *head;

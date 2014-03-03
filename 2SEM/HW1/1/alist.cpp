@@ -11,14 +11,14 @@ ArrayList :: ~ArrayList(){
 
 
 void ArrayList :: push(int value){
-    a[actualSize++] = value;
+    list[actualSize++] = value;
 }
 
 void ArrayList :: pop(int value){
     for (int i = 0; i < actualSize; i++)
-        if (a[i] == value){
+        if (list[i] == value){
             for (int j = i + 1; j < actualSize; j++){
-                a[j - 1] = a[j];
+                list[j - 1] = list[j];
             }
             actualSize--;
             return;
@@ -27,14 +27,14 @@ void ArrayList :: pop(int value){
 
 bool ArrayList :: find(int value){
     for (int i = 0; i < actualSize; i++)
-        if (a[i] == value)
+        if (list[i] == value)
             return true;
     return false;            
 }
 
 void ArrayList :: print(){
     for (int i = 0; i < actualSize; i++)
-        cout << a[i] << " ";
+        cout << list[i] << " ";
     cout << endl;    
 }
 
