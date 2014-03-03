@@ -5,8 +5,8 @@ class ArrayList : public List
 {
 
 	public:
-        	ArrayList();
-	        ~ArrayList();
+       	ArrayList();
+        ~ArrayList();
 		void push(int value);
 		void pop(int value);
 		bool find(int value);
