@@ -2,14 +2,19 @@
 
 template <typename T> class Stack
 {
-    public:
+	public:
 
-	Stack();
-	virtual ~Stack() = 0;
+	Stack(){
+	}
+
+	virtual ~Stack(){
+	}
+
 	virtual void push(T value) = 0;
 	virtual T pop() = 0;
 	virtual int size() = 0;
 	virtual bool isEmpty() = 0;
+	virtual T top() = 0;
 };
 
 

@@ -1,12 +1,34 @@
-#include <arraystack.h>
 #include <cstdio>
+#include "calculator.h"
+#include <stdlib.h>
+#include <string.h>
+#include <arraystack.h>
+#include <linstack.h>
+
+using namespace std;
+using namespace scorpion;
 
 int main()
 {
-    Stack<int> *aStack = new ArrayStack<int>();
-    aStack->push(2);
-    aStack->push(3);
-    printf("%d %d", aStack->pop(), aStack->pop());
-    delete aStack;
-    return 0;
+	printf("Enter you expressions.\n");
+
+	const int maxn = 100500;
+	char *message = new char[maxn];
+	memset (message, 0, maxn * sizeof(char));
+	fgets(message, maxn, stdin);
+
+	char *polish = toPolish(message);
+
+	double result = calcResult(polish);
+
+	delete[] message;
+	delete[] polish;
+
+	printf("Answer is %.7f", result);
+	system("pause");
+	return 0;
+
+	return 0;
+
 }
+
