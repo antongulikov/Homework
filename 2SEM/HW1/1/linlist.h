@@ -4,8 +4,8 @@
 class LinList : public List
 {
 	public:
-	        LinList();
-	        ~LinList();
+		LinList();
+		~LinList();
 		void push(int value);
 		void pop(int value);
 		bool find(int value);

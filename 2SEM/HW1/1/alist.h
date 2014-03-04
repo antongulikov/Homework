@@ -5,8 +5,8 @@ class ArrayList : public List
 {
 
 	public:
-       	ArrayList();
-        ~ArrayList();
+		ArrayList();
+		~ArrayList();
 		void push(int value);
 		void pop(int value);
 		bool find(int value);
@@ -17,6 +17,6 @@ class ArrayList : public List
 
 		int list[141195];
 		int actualSize;
-    
+
 };
 
