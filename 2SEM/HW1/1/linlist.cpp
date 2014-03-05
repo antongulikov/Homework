@@ -27,7 +27,7 @@ void LinList :: pop(int value){
 	ListElement *tmp = head;
 	ListElement *prev = nullptr;
 	while (tmp != nullptr){
-		if (tmp->value == value && prev == nullptr){
+		if (tmp->value == value && prev == nullptr){			
 			head = head->next;	
 			delete tmp;
 			return;
@@ -75,9 +75,5 @@ LinList :: ~LinList(){
 		delete head;
 		head = tmp;
 	}
-	while (last != nullptr){
-		ListElement *tmp = last->next;
-		delete last;
-		last = tmp;
-	}
+	delete last;
 }
