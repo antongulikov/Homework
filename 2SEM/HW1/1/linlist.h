@@ -20,7 +20,7 @@ class LinList : public List
 		};	
 	
 		ListElement *head;
-		ListElement *last;
+		LiseElement *last;
 };
 
 
