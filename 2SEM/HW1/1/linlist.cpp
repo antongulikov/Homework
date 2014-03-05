@@ -3,21 +3,21 @@
 
 using namespace std;
 
-LinList::LinList() : head(nullptr), last(nullptr)
+LinList::LinList() : head(NULL), last(NULL)
 {    
 }
 
 void LinList :: push(int value){
-	if (head == nullptr){
+	if (head == NULL){
 		ListElement *tmp = new ListElement();
 		tmp->value = value;
-		tmp->next = nullptr;
+		tmp->next = NULL;
 		head = tmp;
 		last = head;
 	} else{
 		ListElement *tmp = new ListElement();
 		tmp->value = value;
-		tmp->next = nullptr;            
+		tmp->next = NULL;            
 		last->next = tmp;
 		last = tmp;
 	}
@@ -25,14 +25,14 @@ void LinList :: push(int value){
 
 void LinList :: pop(int value){
 	ListElement *tmp = head;
-	ListElement *prev = nullptr;
-	while (tmp != nullptr){
-		if (tmp->value == value && prev == nullptr){
+	ListElement *prev = NULL;
+	while (tmp != NULL){
+		if (tmp->value == value && prev == NULL){			
 			head = head->next;	
 			delete tmp;
 			return;
 		}
-		if (tmp->value == value && prev != nullptr){
+		if (tmp->value == value && prev != NULL){
 			prev->next = tmp->next;
 			delete tmp;
 			return;
@@ -43,7 +43,7 @@ void LinList :: pop(int value){
 }
 bool LinList :: find(int value){
 	ListElement *tmp = head;
-	while (tmp != nullptr){
+	while (tmp != NULL){
 		if (tmp->value == value)
 			return true;
 		tmp = tmp->next;	
@@ -53,7 +53,7 @@ bool LinList :: find(int value){
 
 void  LinList :: print(){
 	ListElement *tmp = head;
-	while (tmp != nullptr){
+	while (tmp != NULL){
 		cout << tmp->value << " ";
 		tmp = tmp->next;
 	}
@@ -62,7 +62,7 @@ void  LinList :: print(){
 int LinList :: size(){
 	ListElement *tmp = head;
 	int ans = 0;
-	while (tmp != nullptr){
+	while (tmp != NULL){
 		ans++;
 		tmp = tmp->next;
 	}
@@ -70,14 +70,10 @@ int LinList :: size(){
 }
 
 LinList :: ~LinList(){
-	while (head != nullptr){
+	while (head != NULL){
 		ListElement *tmp = head->next;
 		delete head;
 		head = tmp;
 	}
-	while (last != nullptr){
-		ListElement *tmp = last->next;
-		delete last;
-		last = tmp;
-	}
+	delete last;
 }
