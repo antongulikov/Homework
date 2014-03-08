@@ -56,9 +56,16 @@ void testLinList(){
     
 }
 
+void testLinList2(){
+	cout << endl;
+	List *A = new LinList();
+	A->push(3);
+	delete A;
+}
 
 int main(){
 	testArrayList();
 	testLinList();
+	testLinList2();
 	return 0;
 }

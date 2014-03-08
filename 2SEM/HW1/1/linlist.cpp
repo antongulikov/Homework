@@ -27,12 +27,12 @@ void LinList :: pop(int value){
 	ListElement *tmp = head;
 	ListElement *prev = nullptr;
 	while (tmp != nullptr){
-		if (tmp->value == value && prev == NULL){			
+		if (tmp->value == value && prev == nullptr){			
 			head = head->next;	
 			delete tmp;
 			return;
 		}
-		if (tmp->value == value && prev != NULL){
+		if (tmp->value == value && prev != nullptr){
 			prev->next = tmp->next;
 			delete tmp;
 			return;
