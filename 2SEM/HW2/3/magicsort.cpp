@@ -1,8 +1,5 @@
 #include "magicsort.h"
 
-MagicSort::MagicSort()
-{	
-}
 
 MagicSort::~MagicSort()
 {

@@ -2,9 +2,6 @@
 #include <fstream>
 using namespace std;
 
-FileWriter::FileWriter()
-{
-}
 
 FileWriter::~FileWriter()
 {

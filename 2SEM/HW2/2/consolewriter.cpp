@@ -4,10 +4,6 @@
 
 using namespace std;
 
-ConsoleWriter::ConsoleWriter()
-{
-}
-
 ConsoleWriter::~ConsoleWriter()
 {
 }

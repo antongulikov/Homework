@@ -1,8 +1,5 @@
 #include "quicksort.h"
 
-QuickSort::QuickSort()
-{
-}
 
 QuickSort::~QuickSort()
 {

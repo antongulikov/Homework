@@ -49,6 +49,7 @@ void testSort()
 		delete args[indexOfRows];
 		
 	delete args;
+	delete sortingMachine;
 	
 }
 

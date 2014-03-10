@@ -1,8 +1,5 @@
 #include "bubblesort.h"
 
-BubbleSort::BubbleSort()
-{
-}
 
 BubbleSort :: ~BubbleSort()
 {

@@ -5,10 +5,6 @@
 
 using namespace std;
 
-Writer::Writer()
-{
-}
-
 Writer::~Writer()
 {
 }
