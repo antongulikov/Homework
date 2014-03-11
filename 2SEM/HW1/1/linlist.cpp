@@ -80,7 +80,9 @@ LinList :: ~LinList(){
 		ListElement *tmp = head->next;
 		delete head;
 		head = tmp;
+		if (tmp != nullptr && tmp->next == nullptr){
+			last = tmp;
+		}
 	}
-	if (last != nullptr)
-		delete last;
+	delete last;
 }

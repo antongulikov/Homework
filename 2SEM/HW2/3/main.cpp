@@ -48,7 +48,7 @@ void testSort()
 	for (int indexOfRows =  0; indexOfRows < sizeOfRows; indexOfRows++)
 		delete args[indexOfRows];
 		
-	delete args;
+	delete[] args;
 	delete sortingMachine;
 	
 }

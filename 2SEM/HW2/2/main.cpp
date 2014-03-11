@@ -49,7 +49,7 @@ int main()
 	for (int index = 0; index < sizeOfMatrix; index++)
 		delete args[index];
 		
-	delete args;
+	delete[] args;
 	
 	return 0;
 }
