@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-	cout << "Enter the size of matrix\n";
+	cout << "Enter the size of matrix \n";
 	
 	int sizeOfMatrix = 0;	
 	cin >> sizeOfMatrix;
@@ -50,6 +50,7 @@ int main()
 		delete args[index];
 		
 	delete[] args;
+	
 	
 	return 0;
 }

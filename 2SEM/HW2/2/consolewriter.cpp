@@ -4,9 +4,6 @@
 
 using namespace std;
 
-ConsoleWriter::~ConsoleWriter()
-{
-}
 
 void ConsoleWriter::print(int **args, int sizeOfMatrix)
 {

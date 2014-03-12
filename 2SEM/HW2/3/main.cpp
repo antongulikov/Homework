@@ -22,7 +22,7 @@ void testSort()
 			
 	Sort *sortingMachine = new MagicSort();
 	
-	cout << "Before\n";
+	cout << "Before : \n";
 	for (int indexOfRows = 0; indexOfRows < sizeOfRows; indexOfRows++)
 	{
 		for (int indexOfColumns = 0; indexOfColumns < sizeOfColumns; indexOfColumns++)

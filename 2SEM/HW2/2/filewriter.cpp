@@ -3,10 +3,6 @@
 using namespace std;
 
 
-FileWriter::~FileWriter()
-{
-}
-
 void FileWriter::print(int **args, int sizeOfMatrix)
 {
 	ofstream out;

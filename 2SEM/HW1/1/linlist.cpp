@@ -84,5 +84,5 @@ LinList :: ~LinList(){
 			last = tmp;
 		}
 	}
-	delete last;
+    delete last;
 }

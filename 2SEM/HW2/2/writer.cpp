@@ -5,8 +5,7 @@
 
 using namespace std;
 
-Writer::~Writer()
-{
+Writer :: ~Writer(){
 }
 
 pair <int, int> Writer::getPosition(int position, int sizeOfMatrix)
