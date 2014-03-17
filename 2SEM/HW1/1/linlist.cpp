@@ -10,7 +10,7 @@ LinList::LinList() : head(nullptr)
 void LinList :: push(int value){
 	ListElement *tmp = new ListElement;
 	tmp->value = value;
-	tmp->next = nullptrptr;
+	tmp->next = nullptr;
 	if (head == nullptr)
 		head = tmp;		
 	else{
@@ -65,11 +65,12 @@ int LinList :: size(){
 }
 
 LinList :: ~LinList(){
+	ListElement *tmp = new ListElement;
 	while (head != nullptr){
-		ListElement *tmp = new ListElement;
 		tmp = head->next;
 		delete head;
 		head = tmp;
 	}
+	delete tmp;
 	delete head;	
 }

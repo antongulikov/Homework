@@ -19,6 +19,7 @@ private:
 	Calculator calc;
 
 private slots:
+	/// solt which recalc value at the result board
 	void recalc();
 	
 };
