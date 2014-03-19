@@ -65,12 +65,10 @@ int LinList :: size(){
 }
 
 LinList :: ~LinList(){
-	ListElement *tmp = new ListElement;
 	while (head != nullptr){
-		tmp = head->next;
+		ListElement *tmp = head->next;
 		delete head;
 		head = tmp;
 	}
-	delete tmp;
 	delete head;	
 }
