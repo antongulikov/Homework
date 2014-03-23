@@ -1,15 +1,17 @@
+QT += testlib
 TEMPLATE = app
 CONFIG += console
 CONFIG -= app_bundle
-CONFIG -= qt
 
 SOURCES += main.cpp \
     list.cpp \
     alist.cpp \
-    linlist.cpp
+    linlist.cpp \
+    listtest.cpp
 
 HEADERS += \
     list.h \
     alist.h \
-    linlist.h
+    linlist.h \
+    listtest.h
 

@@ -1,6 +1,7 @@
 #include <alist.h>
 #include <linlist.h>
 #include <iostream>
+#include "listtest.h"
 
 using namespace std;
 
@@ -64,6 +65,8 @@ void testLinList2(){
 }
 
 int main(){
+	ListTest test;
+	QTest :: qExec(&test);
 	testArrayList();
 	testLinList();
 	testLinList2();
