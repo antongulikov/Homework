@@ -4,12 +4,16 @@
 #include <string.h>
 #include <arraystack.h>
 #include <linstack.h>
+#include "teststack.h"
 
 using namespace std;
 using namespace scorpion;
 
 int main()
 {
+
+	TestStack test;
+	QTest :: qExec(&test);
 	printf("Enter you expressions.\n");
 
 	const int maxn = 100500;
