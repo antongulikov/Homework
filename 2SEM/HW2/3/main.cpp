@@ -3,6 +3,7 @@
 #include <ctime>
 #include <cmath>
 #include <algorithm>
+#include "testsort.h"
 
 using namespace std;
 
@@ -22,7 +23,7 @@ void testSort()
 			
 	Sort *sortingMachine = new MagicSort();
 	
-	cout << "Before : \n";
+	cout << "Before\n";
 	for (int indexOfRows = 0; indexOfRows < sizeOfRows; indexOfRows++)
 	{
 		for (int indexOfColumns = 0; indexOfColumns < sizeOfColumns; indexOfColumns++)
@@ -48,13 +49,14 @@ void testSort()
 	for (int indexOfRows =  0; indexOfRows < sizeOfRows; indexOfRows++)
 		delete args[indexOfRows];
 		
-	delete[] args;
-	delete sortingMachine;
+	delete args;
 	
 }
 
 int main()
 {
+	TestSort test;
+	QTest :: qExec(&test);
 	testSort();
 	return 0;		
 }

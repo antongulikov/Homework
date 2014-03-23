@@ -1,13 +1,16 @@
+QT += testlib
 TEMPLATE = app
 CONFIG += console
 CONFIG -= app_bundle
-CONFIG -= qt
+
 
 SOURCES += main.cpp \
     sort.cpp \
-    magicsort.cpp
+    magicsort.cpp \
+    testsort.cpp
 
 HEADERS += \
     sort.h \
-    magicsort.h
+    magicsort.h \
+    testsort.h
 
