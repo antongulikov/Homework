@@ -1,6 +1,7 @@
 #include <bubblesort.h>
 #include <quicksort.h>
 #include <iostream>
+#include "testsort.h"
 
 using namespace std;
 
@@ -43,6 +44,8 @@ void testQuickSort(){
 }
 
 int main(){
+	TestSort test;
+	QTest :: qExec(&test);
 	testQuickSort();
 	testBubbleSort();
 }
