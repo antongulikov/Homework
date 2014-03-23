@@ -1,11 +1,14 @@
 #include <iostream>
 #include <consolewriter.h>
 #include <filewriter.h>
+#include "testwriter.h"
 
 using namespace std;
 
 int main()
 {
+	TestWriter test;
+	QTest::qExec(&test);
 	cout << "Enter the size of matrix \n";
 	
 	int sizeOfMatrix = 0;	
