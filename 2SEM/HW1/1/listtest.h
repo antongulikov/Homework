@@ -13,7 +13,7 @@ class ListTest : public QObject
 public:
 	explicit ListTest(QObject *parent = 0);
 		
-public slots:
+private slots:
 
 	void initTest(){
 		linList = new LinList();
