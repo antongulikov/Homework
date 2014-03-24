@@ -16,6 +16,10 @@ private slots:
 		QVERIFY(calc.calculate("1+2-3*2+6/2") == 0);
 	}
 
+	void calculateTest7plus8(){
+		QVERIFY(calc.calculate("7+8") == 15);
+	}
+
 private :	
 	Calculator calc;	
 };
