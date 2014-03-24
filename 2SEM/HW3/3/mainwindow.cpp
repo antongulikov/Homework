@@ -60,11 +60,8 @@ void MainWindow :: clearMonitor(){
 }
 
 void MainWindow :: calcExpression(){
-	int sizeStr = 100500;
-	const char *str = new char[sizeStr];
-	str = ui->resultLine->text().toStdString().c_str();
+	const char *str = ui->resultLine->text().toStdString().c_str();
 	int result = calc.calculate(str);
-	ui->resultLine->clear();
 	if (result == - (1 << 30))
 		ui->resultLine->setText("FAIL!!!");
 	else	
