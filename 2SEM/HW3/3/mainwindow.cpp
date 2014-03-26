@@ -55,7 +55,6 @@ void MainWindow :: changeMonitor(QString symbol){
 } 
 
 void MainWindow :: clearMonitor(){
-	ui->resultLine->clear();
 	ui->resultLine->setText("");
 }
 
@@ -66,7 +65,7 @@ void MainWindow :: calcExpression(){
 		ui->resultLine->setText("FAIL!!!");
 	else	
 		ui->resultLine->setText(QString :: number(result));
-	delete str;
+	delete[] str;
 }
 
 MainWindow::~MainWindow()
