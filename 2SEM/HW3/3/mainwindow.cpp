@@ -59,13 +59,11 @@ void MainWindow :: clearMonitor(){
 }
 
 void MainWindow :: calcExpression(){
-	const char *str = ui->resultLine->text().toStdString().c_str();
-	int result = calc.calculate(str);
+	int result = calc.calculate(ui->resultLine->text().toStdString().c_str());
 	if (result == - (1 << 30))
 		ui->resultLine->setText("FAIL!!!");
 	else	
 		ui->resultLine->setText(QString :: number(result));
-	delete[] str;
 }
 
 MainWindow::~MainWindow()
