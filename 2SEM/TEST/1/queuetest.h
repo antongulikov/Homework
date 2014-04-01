@@ -25,33 +25,42 @@ private slots:
 		delete doubleQueue;
 	}
 
-	void pushTest(){
+	void pushIntTest(){
 		intQueue->enqueue(1, 1);
+	}
+
+	void pushDoubleTest(){
 		doubleQueue->enqueue(1.5, 1);
 	}
 	
-	void popTest(){
+	void popIntTest(){
 		intQueue->enqueue(1, 1);
-		doubleQueue->enqueue(1.5, 1);
 		QCOMPARE(1, intQueue->dequeue());
+	}
+
+	void popDoubleTest(){
+		doubleQueue->enqueue(1.5, 1);
 		QCOMPARE(1.5, doubleQueue->dequeue());		
 	}
 	
-	void popFromEmptyTest(){
+	void popFromEmptyQueueIntTest(){
 		try{
 			intQueue->dequeue();			
 		}
 		catch(const QueueException &exec){
 			QCOMPARE("Queue is empty!",exec.get());
 		}
+	}
+
+	void popFromEmptyQueueDoubleTest(){
 		try{
 			doubleQueue->dequeue();
 		}
 		catch(const QueueException &exec){
 			QCOMPARE("Queue is empty!",exec.get());
 		}
-	}
-	
+	}	
+
 	void sortElementTest(){
 		intQueue->enqueue(6, 1);
 		intQueue->enqueue(1, 6);
@@ -63,7 +72,7 @@ private slots:
 			QCOMPARE(i, intQueue->dequeue());		
 	}
 	
-	void MaxSizeTest(){
+	void maxSizeTest(){
 		for (int i = 1; i <= 100; i++)
 			intQueue->enqueue(i, i);
 		try{

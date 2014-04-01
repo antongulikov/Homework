@@ -11,8 +11,7 @@ class PriorityQueue
 {
 public:
 
-	PriorityQueue(){
-		size = 0;
+	PriorityQueue() : size(0){
 	}
 	
 	/// Push in Queue
@@ -22,7 +21,7 @@ public:
 		size++;
 		q[size].value = value;
 		q[size].priority = priority;
-		reheap_up(size);		
+		reheapUp(size);		
 	}
 	
 	/// Pop from Queue
@@ -30,7 +29,7 @@ public:
 		if (size != 0){
 			T result = q[1].value;
 			swap(q[1], q[size--]);
-			reheap_down(1);
+			reheapDown(1);
 			return result;			
 		} else{			
 			throw EmptyQueueException("Queue is empty!");				
@@ -54,22 +53,22 @@ private:
 		b = c;		
 	}
 	
-	QueueElement q[maxSize];
+	QueueElement q[maxSize + 1];
 	int size;
 	
 	/// Push up element
-	void reheap_up(int position){
+	void reheapUp(int position){
 		int parent = position >> 1;
 		if (parent == 0)
 			return;
 		if (q[parent].priority < q[position].priority){
 			swap(q[parent], q[position]);
-			reheap_up(parent);							
+			reheapUp(parent);							
 		}	
 	}
 	
 	/// Push down element
-	void reheap_down(int position){
+	void reheapDown(int position){
 		int leftPosition = (position << 1);
 		int rightPosition = leftPosition + 1;
 		int resultPostion = position;
@@ -79,7 +78,7 @@ private:
 			resultPostion = leftPosition;
 		if (resultPostion != position){
 			swap(q[resultPostion], q[position]);
-			reheap_down(resultPostion);		
+			reheapDown(resultPostion);		
 		}			
 	}
 	
