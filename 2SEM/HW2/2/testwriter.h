@@ -22,6 +22,7 @@ private slots:
 
 	
 	void printTest(){
+
 		int **args = new int *[3];
 		for (int i = 0; i < 3; i++)
 			args[i] = new int[3];
@@ -41,10 +42,10 @@ private slots:
 		}
 		
 		for (int i = 0; i < 3; i++)						
-			delete args[i];
-		delete args;
+			delete[] args[i];
+		delete[] args;
 
-		int *ret = new int[9] {5, 4, 7, 8, 9, 6, 3, 2, 1}
+		int *ret = new int[9] {5, 4, 7, 8, 9, 6, 3, 2, 1};
 
 		for (int i = 0; i < 9; i++)
 			QCOMPARE(ret[i], res[i]);
