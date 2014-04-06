@@ -12,10 +12,14 @@ public:
 	
 private slots:
 
-	void initTest(){
+	void init(){
 		writer = new FileWriter();
-		QVERIFY(true);
 	}
+
+	void cleanup(){
+		delete writer;
+	}
+
 	
 	void printTest(){
 		int **args = new int *[3];
@@ -31,6 +35,7 @@ private slots:
 		int *res = new int[9];
 		int x = 0;
 		int size = 0;
+
 		while (cin >> x){
 			res[size++] = x;
 		}
@@ -38,17 +43,16 @@ private slots:
 		for (int i = 0; i < 3; i++)						
 			delete args[i];
 		delete args;
+
+		int *ret = new int[9] {5, 4, 7, 8, 9, 6, 3, 2, 1}
+
+		for (int i = 0; i < 9; i++)
+			QCOMPARE(ret[i], res[i]);
 		
-		QVERIFY(res[0] == 5 && res[1] ==  4 && res[2] == 7 
-		&& res[3] == 8 && res[4] == 9 && res[5] == 6
-		&& res[6] == 3 && res[7] == 2 && res[8] == 1 );
-		delete res;
+		delete[] res;
+		delete[] ret;
 	}
 	
-	void cleanupTest(){
-		delete writer;
-		QVERIFY(true);
-	}
 
 private :
 	Writer *writer;	

@@ -14,18 +14,24 @@ signals:
 	
 private slots:
 
-	void initTest(){
+	void init(){
 		bSort = new BubbleSort();
 		qSort = new QuickSort();
-		QVERIFY(true);
 	}
+
+	void cleanup(){
+		delete qSort;
+		delete bSort;
+	}
+
 
 	void testQuickSort(){
 		int args[4];
 		for (int i = 3; i >= 0; i--)
 			args[i] = i;
 		qSort->sort(args, 4);
-		QVERIFY(args[0] == 0 && args[1] == 1 && args[2] == 2 && args[3] == 3);
+		for (int i = 0; i < 4; i++)
+			QCOMPARE(args[i], i);
 	}
 
 	void testBubbleSort(){
@@ -33,13 +39,8 @@ private slots:
 		for (int i = 3; i >= 0; i--)
 			args[i] = i;
 		bSort->sort(args, 4);
-		QVERIFY(args[0] == 0 && args[1] == 1 && args[2] == 2 && args[3] == 3);
-	}
-
-	void cleanupTest(){
-		delete qSort;
-		delete bSort;
-		QVERIFY(true);
+		for (int i = 0; i < 4; i++)
+			QCOMPARE(args[i], i);	
 	}
 
 private :

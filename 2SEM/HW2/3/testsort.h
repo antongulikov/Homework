@@ -14,10 +14,14 @@ signals:
 	
 private slots:
 
-	void initTest(){
+	void init(){
 		sMachine = new MagicSort();
-		QVERIFY(true);
 	}
+
+	void cleanup(){
+		delete sMachine;
+	}
+
 
 	void testSort(){
 		int **args = new int*[2];
@@ -31,11 +35,6 @@ private slots:
 		for (int i = 0; i < 2; i++)
 			delete args[i];
 		delete args;
-	}
-
-	void cleanupTest(){
-		delete sMachine;
-		QVERIFY(true);
 	}
 
 private :

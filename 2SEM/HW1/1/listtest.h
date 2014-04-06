@@ -15,45 +15,46 @@ public:
 		
 private slots:
 
-	void initTest(){
+	void init(){
 		linList = new LinList();
 		arrayList = new ArrayList();
-		QVERIFY(true);
 	}
+
+	void cleanup(){
+		delete arrayList;
+		delete linList;
+	}
+
 	
-	void emptyLinList(){
+	void emptyLinListTest(){
 		QVERIFY(linList->size() == 0);
 	}
 	
-	void emptyArrayList(){
+	void emptyArrayListTest(){
 		QVERIFY(arrayList->size() == 0);
 	}
 	
-	void pushElementToArrayList(){
+	void pushElementToArrayListTest(){
 		arrayList->push(3);
 		QVERIFY(arrayList->size() == 1);
 	}
 	
-	void pushElementToLinList(){
+	void pushElementToLinListTest(){
 		linList->push(2);
 		QVERIFY(linList->size() == 1);
 	}
 	
-	void popFromLinList(){
+	void popFromLinListTest(){
+		linList->push(2);
 		linList->pop(2);
 		QVERIFY(linList->size() == 0);
 	}
 	
-	void popFromArrayList(){
+	void popFromArrayListTest(){
+		arrayList->push(3);
 		arrayList->pop(3);
 		QVERIFY(arrayList->size() == 0);
-	}
-	
-	void cleanupAllTest(){
-		delete arrayList;
-		delete linList;
-		QVERIFY(true);
-	}
+	}	
 
 private :
 	List *linList;

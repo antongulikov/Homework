@@ -12,10 +12,14 @@ public:
 
 private slots:
 	
-	void intitTest(){
+	void intit(){
 		calc = new Calculator;
-		QVERIFY(true);
 	}
+
+	void cleanup(){
+		delete calc;
+	}
+
 	
 	void plusTest(){
 		QVERIFY(calc->calculate(1, "+", 2) == 3);
@@ -33,11 +37,6 @@ private slots:
 		QVERIFY(calc->calculate(4, "/", 2) == 2);
 	}
 	
-	void cleanupTest(){
-		delete calc;
-		QVERIFY(true);		
-	}
-
 private :
 	Calculator *calc;	
 };
