@@ -3,6 +3,8 @@
 #include <QObject>
 #include <QtTest/QtTest>
 
+/// Tests for MySet
+
 class MySetTest : public QObject
 {
 	Q_OBJECT

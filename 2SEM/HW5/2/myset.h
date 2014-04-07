@@ -23,7 +23,8 @@ public:
 	bool find(T value){
 		return (helperSet.find(value) != helperSet.end());
 	}
-	
+
+	/// Intersect two sets
 	MySet<T> intersectSet(MySet<T> secondSet){
 		MySet<T> res;
 		for (const T &it : helperSet){
@@ -32,7 +33,8 @@ public:
 		}
 		return res;			
 	}
-	
+
+	/// Union two sets
 	MySet<T> unionSet(MySet<T> secondSet){
 		MySet<T> res = secondSet;
 		for (const T &it : helperSet)
