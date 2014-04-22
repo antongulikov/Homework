@@ -10,12 +10,16 @@ SOURCES += main.cpp \
     listexception.cpp \
     duplicateexception.cpp \
     existexception.cpp \
-    UniqueListTest.cpp
+    UniqueListTest.cpp \
+    list.cpp \
+    linlist.cpp
 
 HEADERS += \
     uniquelist.h \
     listexception.h \
     duplicateexception.h \
     existexception.h \
-    uniquelisttest.h
+    uniquelisttest.h \
+    list.h \
+    linlist.h
 

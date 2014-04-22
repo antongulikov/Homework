@@ -1,8 +1,5 @@
 #include <QObject>
-#include <iostream>
 #include "uniquelisttest.h"
-
-using namespace std;
 
 int main()
 {

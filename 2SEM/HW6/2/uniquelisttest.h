@@ -4,8 +4,6 @@
 #include "uniquelist.h"
 #include "listexception.h"
 
-/// Tests for UniqueList
-
 class UniqueListTest : public QObject
 {
 	Q_OBJECT
@@ -15,7 +13,7 @@ public:
 private slots:
 
 void init(){
-	list = new UniqueList;
+	list = new UniqueList();
 }
 
 void cleanup(){
