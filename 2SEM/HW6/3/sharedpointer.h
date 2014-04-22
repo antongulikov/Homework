@@ -26,10 +26,13 @@ public:
 		return sharedPointer->ptr;
 	}
 	
+		
 	SharedPointer& operator = (SharedPointer const &shp){
-		sharedPointer->count--;
-		sharedPointer = shp.sharedPointer;
-		sharedPointer->count++;
+		if (sharedPointer != shp.sharedPointer){
+			sharedPointer->count--;
+			sharedPointer = shp.sharedPointer;
+			sharedPointer->count++;
+		}
 		return *this;
 	}
 	
