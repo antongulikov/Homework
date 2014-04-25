@@ -19,6 +19,7 @@ private slots:
 		int size = tmpPointer->getCount();
 		delete tmpPointer;
 		QVERIFY((mySharedPointer->getCount() + 1) == size);
+		delete mySharedPointer;
 	}
 		
 	void givingTest(){
