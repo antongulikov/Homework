@@ -9,7 +9,8 @@ public:
 	HashFunction(long long pw, long long base);
 	
 	/// Method which returns a value of string's hash
-	long long getHash(string s);
+	long long getHash(string const s);
+	long long getBase();
 		
 private :
 	long long base;

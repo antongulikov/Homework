@@ -16,19 +16,19 @@ HashTable::~HashTable()
 	delete hashFunction;
 }
 
-void HashTable::insert(string s)
+void HashTable::insert(string const s)
 {
 	long long hash = hashFunction->getHash(s);
 	hashArray[hash].insert(s);
 }
 
-bool HashTable::find(string s)
+bool HashTable::find(string const s)
 {
 	long long hash = hashFunction->getHash(s);
 	return (hashArray[hash].find(s) != hashArray[hash].end());
 }
 
-void HashTable::erase(string s)
+void HashTable::erase(string const s)
 {
 	long long hash = hashFunction->getHash(s);
 	hashArray[hash].erase(s);
@@ -58,12 +58,12 @@ int HashTable::longestConflict()
 	return result;
 }
 
-void HashTable::changeHashFunction(long long pw, long long base)
+void HashTable::changeHashFunction(HashFunction *newHashFunction)
 {
 	delete hashFunction;
-	hashFunction = new HashFunction(pw, base);
-	set<string> *newArray = new set<string>[base];
-	for (int i = 0; i < base; i++)
+	hashFunction = newHashFunction;
+	set<string> *newArray = new set<string>[newHashFunction->getBase()];
+	for (int i = 0; i < newHashFunction->getBase(); i++)
 		newArray[i].clear();
 	for (int i = 0; i < hashBase; i++){
 		for (set<string> :: iterator it = hashArray[i].begin(); it != hashArray[i].end(); it++)
@@ -71,7 +71,7 @@ void HashTable::changeHashFunction(long long pw, long long base)
 		hashArray[i].clear();		
 	}
 	delete[] hashArray;
-	hashBase = base;
+	hashBase = newHashFunction->getBase();
 	hashArray = newArray;
 }
 

@@ -54,7 +54,7 @@ private slots:
 	void changeHashFunction(){
 		myHashTable->insert("123");
 		myHashTable->insert("1234");
-		myHashTable->changeHashFunction(34, 345);
+		myHashTable->changeHashFunction(new HashFunction(34, 345));
 		QVERIFY(myHashTable->find("123") && myHashTable->find("1234"));
 	}	
 

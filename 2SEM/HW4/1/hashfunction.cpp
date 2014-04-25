@@ -4,7 +4,7 @@ HashFunction::HashFunction(long long pw, long long base) : pw(pw), base(base)
 {
 }
 
-long long HashFunction::getHash(string s)
+long long HashFunction::getHash(string const s)
 {
 	long long result = 0;
 	for (int i = 0; i < s.size(); i++){
@@ -12,4 +12,9 @@ long long HashFunction::getHash(string s)
 		result %= base;
 	}
 	return result;
+}
+
+long long HashFunction::getBase()
+{
+	return base;
 }

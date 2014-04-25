@@ -9,11 +9,11 @@ public:
 	HashTable(long long pw, long long base);
 	~HashTable();
 	/// insert element in HashTable
-	void insert(string s);
+	void insert(string const s);
 	/// find element in HashTable
-	bool find(string s);
+	bool find(string const s);
 	/// erase element from HashTable
-	void erase(string s);
+	void erase(string const s);
 	/// count loadFactor of HashTable
 	double loadFactor();
 	/// find the number of conflict in hash table
@@ -21,7 +21,7 @@ public:
 	/// find the the most long chain in hashArray 
 	int longestConflict();
 	/// method for changing hash function
-	void changeHashFunction(long long pw, long long base);
+	void changeHashFunction(HashFunction *newHashFunction);
 	
 private:
 	set <string> *hashArray;
