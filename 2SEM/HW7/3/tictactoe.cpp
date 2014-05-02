@@ -2,15 +2,9 @@
 #include "ui_tictactoe.h"
 #include <QDebug>
 
-TicTacToe::TicTacToe(QWidget *parent) :
-QWidget(parent),
-ui(new Ui::TicTacToe),
-numberOfSteps(0),
-N(3),
-winLength(3),
-buttons(QVector <QPushButton*>(3*3))
+TicTacToe::TicTacToe(QWidget *parent) : QWidget(parent), ui(new Ui::TicTacToe), numberOfSteps(0), N(3), winLength(3), buttons(QVector < QPushButton* >(3 * 3))
 {
-	field = new states*[N];
+	field = new states* [N];
 	for (int i = 0; i < N; i++){
 		field[i] = new states[N];		
 	}	
@@ -18,15 +12,9 @@ buttons(QVector <QPushButton*>(3*3))
 	drowField();	
 }
 
-TicTacToe::TicTacToe(int size, QWidget *parent) :
-N(size),
-winLength(3),
-QWidget(parent),
-numberOfSteps(0),
-ui(new Ui::TicTacToe),
-buttons(QVector <QPushButton*>(size * size))
+TicTacToe::TicTacToe(int size, QWidget *parent) : N(size), winLength(3), QWidget(parent), numberOfSteps(0), ui(new Ui::TicTacToe), buttons(QVector < QPushButton* >(size * size))
 {
-	field = new states*[N];
+	field = new states* [N];
 	for (int i = 0; i < N; i++){
 		field[i] = new states[N];		
 	}
@@ -98,7 +86,7 @@ void TicTacToe::changeSize(int newSize)
 	deleteArrays();
 	delete grid;
 	N = newSize;
-	field = new states*[N];
+	field = new states* [N];
 	for (int i = 0; i < N; i++){
 		field[i] = new states[N];		
 	}
@@ -143,7 +131,7 @@ bool TicTacToe::winVertical(int x, int y)
 	int count = 0;
 	if (x + winLength - 1 >= N)
 		return false;
-	for (int i = 0; i < N; i++)
+	for (int i = 0; i < winLength; i++)
 		count += field[x][y] == field[x + i][y];
 	return (count == winLength);	
 }
