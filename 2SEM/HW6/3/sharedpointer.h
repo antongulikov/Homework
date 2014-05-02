@@ -30,7 +30,7 @@ public:
 	SharedPointer& operator = (SharedPointer const &shp){
 		if (sharedPointer != shp.sharedPointer){
 			sharedPointer->count--;
-			if (sharedPointer->count == 0)
+			if (sharedPointer->count == -1)
 				delete sharedPointer;
 			sharedPointer = shp.sharedPointer;
 			sharedPointer->count++;
