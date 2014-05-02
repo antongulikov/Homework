@@ -16,19 +16,19 @@ HashTable::~HashTable()
 	delete hashFunction;
 }
 
-void HashTable::insert(const string s)
+void HashTable::insert(const string &s)
 {
 	long long hash = hashFunction->getHash(s);
 	hashArray[hash].insert(s);
 }
 
-bool HashTable::find(const string s)
+bool HashTable::find(const string &s)
 {
 	long long hash = hashFunction->getHash(s);
 	return (hashArray[hash].find(s) != hashArray[hash].end());
 }
 
-void HashTable::erase(const string s)
+void HashTable::erase(const string &s)
 {
 	long long hash = hashFunction->getHash(s);
 	hashArray[hash].erase(s);
