@@ -9,11 +9,11 @@ public:
 	HashTable(long long pw, long long base);
 	~HashTable();
 	/// insert element in HashTable
-	void insert(string const s);
+	void insert(const string s);
 	/// find element in HashTable
-	bool find(string const s);
+	bool find(const string s);
 	/// erase element from HashTable
-	void erase(string const s);
+	void erase(const string s);
 	/// count loadFactor of HashTable
 	double loadFactor();
 	/// find the number of conflict in hash table
