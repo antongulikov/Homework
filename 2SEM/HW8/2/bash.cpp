@@ -17,5 +17,11 @@ Bash::~Bash()
 void Bash::processReply(bool ok)
 {
 	elements = view->page()->mainFrame()->findAllElements("div[class=text]");
-	emit readyToWork(elements);			
+	ratings = view->page()->mainFrame()->findAllElements("span[class=rating]");
+	
+	message.clear();
+	message.push_back(elements);
+	message.push_back(ratings);
+	
+	emit readyToWork(message);			
 }

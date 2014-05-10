@@ -11,6 +11,7 @@
 #include <QWebPage>
 #include <QWebView>
 #include <QDomDocument>
+#include <QVector>
 	
 
 /// Class for getting information from bash.im
@@ -24,14 +25,16 @@ public:
 	
 signals:
 	/// signals to reutrn list of replics
-	void readyToWork(QWebElementCollection elements);
+	void readyToWork(QVector<QWebElementCollection> message);
 	
 private slots:
 	void processReply(bool ok);		
 	
 private:
-	QWebView *view;
+	QWebView *view;	
 	QWebElementCollection elements;
+	QWebElementCollection ratings;
+	QVector<QWebElementCollection> message;
 };
 
 #endif // BASH_H
