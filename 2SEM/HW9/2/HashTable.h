@@ -3,7 +3,8 @@
 #include "List.h"
 #include "HashFunction.h"
 
-/// Clases for hashTable
+/** HashTable class interface.
+    It contains string words */
 
 class HashTable
 {
@@ -15,22 +16,43 @@ public:
     void remove (string str) throw (string);
     bool isExist (string str);
     void rebuildTable(unsigned int newSize, HashFunction *hashFunct);
-    void checkOverFlow();    
-    unsigned int getHTsize();
-    unsigned int getCollisions();
-    unsigned int getMaxCollLength();
-    unsigned int getElemQuantity();
-    double getLoadFactor();
-    HashFunction* getHashFunction();  
-    List **getTable();
-    
-    
+    /** Function checks loadFactor and restruct table if it's necessary */
+    void checkOverFlow();
+    HashFunction *getHash()
+    {
+        return hash;
+    }
+    unsigned int getHTsize()
+    {
+        return hTsize;
+    }
+    unsigned int getCollisions()
+    {
+        return collisions;
+    }
+    unsigned int getMaxCollLength()
+    {
+        return maxCollLength;
+    }
+    unsigned int getElemQuantity()
+    {
+        return elemQuantity;
+    }
+    double getLoadFactor()
+    {
+        return LoadFactor;
+    }
+    List *getTableElement(unsigned int index)
+    {
+        return table[index];
+    }
+
 private:
     unsigned int hTsize;
     unsigned int collisions;
     unsigned int maxCollLength;
     unsigned int elemQuantity;
-    double loadFactor;
+    double LoadFactor;
     HashFunction *hash;
     List **table;
 };

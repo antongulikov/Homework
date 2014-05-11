@@ -10,13 +10,8 @@ List::List() :
 
 List::~List()
 {
-    while (head != NULL)
-    {
-		remove(head->getStr());    
-    }
-    delete head;
-    delete tail;
-    size = 0;
+    if (size > 0)
+        delete head;
 }
 
 bool List::isEmpty()
@@ -24,7 +19,7 @@ bool List::isEmpty()
     return size == 0;
 }
 
-void List::add (string str, unsigned int quantity)
+void List::add(string str, unsigned int quantity)
 {
     if (size == 0)
     {
@@ -127,34 +122,4 @@ bool List::exists(string str)
             temp = temp->getNext();
     }
     return temp->getStr() == str;
-}
-
-ListElement* List::getHead()
-{
-	return head;
-}
-
-void List:: setHead(ListElement *tmp)
-{
-	head = tmp;
-}
-
-ListElement* List:: getTail()
-{
-	return tail;
-}
-
-void  List:: setTail(ListElement *tmp)
-{
-	tail = tmp;
-}
-
-unsigned int List:: getSize()
-{
-	return size;
-}
-
-void List :: setSize(unsigned int newSize)
-{
-	size = newSize;
 }
