@@ -1,4 +1,4 @@
-#include "HashTableManager.h"
+/*#include "HashTableManager.h"
 using namespace std;
 
 int main()
@@ -7,14 +7,15 @@ int main()
     HTmanager->dialog();
     delete HTmanager;
     cout << "Program has finished." << endl;
-}
+}*/
 
-//#include "ListTest.h"
-//#include "HashTableTest.h"
-//int main()
-//{
-//    ListTest ltest;
-//    QTest::qExec(&ltest);
-//    HashTableTest htest;
-//    QTest::qExec(&htest);
-//}
+#include "ListTest.h"
+#include "HashTableTest.h"
+int main()
+{
+    ListTest ltest;
+    QTest::qExec(&ltest);
+    HashTableTest htest;
+    QTest::qExec(&htest);
+    return 0;
+}

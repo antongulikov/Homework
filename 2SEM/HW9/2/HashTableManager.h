@@ -1,13 +1,14 @@
 #pragma once
 
 #include "HashTable.h"
-
+/// Class for Manager
 class HashTableManager
 {
 public:
     HashTableManager();
     ~HashTableManager();
     void dialog();
+    
 private:
     void showStatistics();
     void changeHash();

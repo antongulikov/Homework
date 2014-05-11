@@ -37,10 +37,10 @@ void HashTableManager::menu()
 
 void HashTableManager::showStatistics()
 {
-	cout << "Quantity of elements - " << table->ElemQuantity << endl
-		 << "Quantity of collisions - " << table->Collisions << endl
-		 << "Max collision length - " << table->MaxCollLength << endl
-		 << "Loadfacot - " << table->LoadFactor << endl;
+	cout << "Quantity of elements - " << table->getElemQuantity() << endl
+		 << "Quantity of collisions - " << table->getCollisions() << endl
+		 << "Max collision length - " << table->getMaxCollLength() << endl
+		 << "Loadfacot - " << table->getLoadFactor() << endl;
 }
 
 void HashTableManager::dialog()

@@ -1,5 +1,5 @@
 TEMPLATE = app
-CONFIG += console qtestlib
+QT += testlib
 
 
 SOURCES += main.cpp \

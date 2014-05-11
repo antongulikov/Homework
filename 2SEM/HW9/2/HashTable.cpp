@@ -1,12 +1,12 @@
 #include "HashTable.h"
 
 HashTable::HashTable(unsigned int size, HashFunction *hashFunct) :
-	HTsize(size),
+	hTsize(size),
 
-	Collisions(0),
-	MaxCollLength(0),
-	ElemQuantity(0),
-	LoadFactor(0),
+	collisions(0),
+	maxCollLength(0),
+	elemQuantity(0),
+	loadFactor(0),
 	hash(hashFunct)
 {
 	createTable();
@@ -14,8 +14,8 @@ HashTable::HashTable(unsigned int size, HashFunction *hashFunct) :
 
 void HashTable::createTable()
 {
-	table = new List *[HTsize];
-	for (unsigned int i = 0; i < HTsize - 1; i++)
+	table = new List *[hTsize];
+	for (unsigned int i = 0; i < hTsize - 1; i++)
 	{
 		table[i] = NULL;
 	}
@@ -23,29 +23,30 @@ void HashTable::createTable()
 
 void HashTable::add(string str, unsigned int quantity)
 {
-	unsigned long long int index = hash->hash(str) % HTsize;
+	unsigned long long int index = hash->hash(str) % hTsize;
 	if (table[index] == NULL)
 	{
 		table[index] = new List();
 		table[index]->add(str, quantity);
-		ElemQuantity++;
-		LoadFactor += 1.0 / double(HTsize);
+		elemQuantity++;
+		loadFactor += 1.0 / double(hTsize);
 		return;
 	}
-	unsigned int listSize = table[index]->size;
+	
+	unsigned int listSize = table[index]->getSize();
 	table[index]->add(str, quantity);
-	if (table[index]->size > listSize)
+	if (table[index]->getSize() > listSize)
 	{
-		Collisions++;
-		ElemQuantity++;
-		if (MaxCollLength < table[index]->size - 1)
-			MaxCollLength = table[index]->size - 1;
+		collisions++;
+		elemQuantity++;
+		if (maxCollLength < table[index]->getSize() - 1)
+			maxCollLength = table[index]->getSize() - 1;
 	}
 }
 
 void HashTable::remove(string str) throw (string)
 {
-	unsigned long long int index = hash->hash(str) % HTsize;
+	unsigned long long int index = hash->hash(str) % hTsize;
 	if (table[index] != NULL)
 	{
 		try
@@ -64,20 +65,23 @@ void HashTable::remove(string str) throw (string)
 
 bool HashTable::isExist(string str)
 {
-	unsigned long long int index = hash->hash(str) % HTsize;
+	unsigned long long int index = hash->hash(str) % hTsize;
 	if (table[index] != NULL && !table[index]->isEmpty())
 	{
-		ListElement *temp = table[index]->head;
-		while(temp->next != NULL)
+		ListElement *temp = table[index]->getHead();
+		while(temp->getNext() != NULL)
 		{
-			if (temp->str == str)
+			if (temp->getStr() == str)
+			{
 				return true;
+			}
+			
 			else
 			{
-				temp = temp->next;
+				temp = temp->getNext();
 			}
 		}
-		return temp->str == str;
+		return temp->getStr() == str;
 	}
 	else
 		return false;
@@ -86,38 +90,75 @@ bool HashTable::isExist(string str)
 void HashTable::rebuildTable(unsigned int newSize, HashFunction *hashFunct)
 {
 	List **oldTable = table;
-	unsigned int oldSize = HTsize;
-	HTsize = newSize;
+	unsigned int oldSize = hTsize;
+	hTsize = newSize;
 	createTable();
-	Collisions = 0;
-	MaxCollLength = 0;
-	LoadFactor = 0;
-	ElemQuantity = 0;
+	collisions = 0;
+	maxCollLength = 0;
+	loadFactor = 0;
+	elemQuantity = 0;
 	hash = hashFunct;
 	for (unsigned int i = 0; i < oldSize; i++)
 	{
 		if (oldTable[i] != NULL && !oldTable[i]->isEmpty())
 		{
-			ListElement *temp = oldTable[i]->head;
-			while (temp->next != NULL)
+			ListElement *temp = oldTable[i]->getHead();
+			while (temp->getNext() != NULL)
 			{
-				add(temp->str, temp->elemCounter);
-				temp = temp->next;
+				add(temp->getStr(), temp->getElemCounter());
+				temp = temp->getNext();
 			}
-			add(temp->str, temp->elemCounter);
+			add(temp->getStr(), temp->getElemCounter());
+			
 		}
+		
 	}
 }
 
 void HashTable::checkOverFlow()
 {
-	if (LoadFactor > 0.6)
-		rebuildTable(2 * HTsize, hash);
+	if (loadFactor > 0.6)
+		rebuildTable(2 * hTsize, hash);
+}
+
+unsigned int HashTable::getHTsize()
+{
+	return hTsize;
+}
+
+unsigned int HashTable::getCollisions()
+{
+	return collisions;
+}
+
+unsigned int HashTable::getMaxCollLength()
+{
+	return maxCollLength;
+}
+
+unsigned int HashTable::getElemQuantity()
+{
+	return elemQuantity;
+}
+
+double HashTable::getLoadFactor()
+{
+	return loadFactor;
+}
+
+HashFunction *HashTable::getHashFunction()
+{
+	return hash;
+}
+
+List **HashTable::getTable()
+{
+	return table;
 }
 
 HashTable::~HashTable()
 {
-	for (unsigned int i = 0; i < HTsize; i++)
+	for (unsigned int i = 0; i < hTsize; i++)
 	{
 		if (table[i] != NULL)
 			delete table[i];

@@ -1,118 +1,160 @@
 #include "List.h"
 
 List::List() :
+    head(NULL),
+    tail (NULL),
+    size(0)
 {
 
 }
 
 List::~List()
 {
-	if (size > 0)
-		delete head;
+    while (head != NULL)
+    {
+		remove(head->getStr());    
+    }
+    delete head;
+    delete tail;
+    size = 0;
 }
 
 bool List::isEmpty()
 {
-	return size == 0;
+    return size == 0;
 }
 
 void List::add (string str, unsigned int quantity)
 {
-	if (size == 0)
-	{
-		ListElement *temp = new ListElement(str);
-		head = temp;
-		tail = temp;
-		head->elemCounter += quantity;
-		size++;
-	}
-	else
-	{
-		ListElement *tmp = head;
-		while (tmp->next != NULL)
-		{
-			if (tmp->str == str)
-			{
-				tmp->elemCounter += quantity;
-				return;
-			}
-			tmp = tmp->next;
-		}
-		if (tail->str == str)
-		{
-			tail->elemCounter += quantity;
-			return;
-		}
-		else
-		{
-			ListElement *temp = new ListElement(str, tail, NULL);
-			temp->elemCounter += quantity;
-			tail->next = temp;
-			tail = temp;
-			size++;
-		}
-	}
+    if (size == 0)
+    {
+        ListElement *temp = new ListElement(str);
+        head = temp;
+        tail = temp;
+        head->setElemCounter(temp->getElemCounter() + quantity);
+        size++;
+    }
+    else
+    {
+        ListElement *tmp = head;
+        while (tmp->getNext() != NULL)
+        {
+            if (tmp->getStr() == str)
+            {
+                tmp->setElemCounter(tmp->getElemCounter() + quantity);
+                return;
+            }
+            tmp = tmp->getNext();
+        }
+        if (tail->getStr() == str)
+        {
+            tmp->setElemCounter(tmp->getElemCounter() + quantity);
+            return;
+        }
+        else
+        {
+            ListElement *temp = new ListElement(str, tail, NULL);
+            temp->setElemCounter(temp->getElemCounter() + quantity);
+            tail->setNext(temp);
+            tail = temp;
+            size++;
+        }
+    }
 }
 
 void List::remove(string str) throw (string)
 {
-	if (size >= 2)
-	{
-		if (head->str == str)
-		{
-			ListElement *toDel = head;
-			head = head->next;
-			head->prev = NULL;
-			toDel->next = NULL;
-			delete toDel;
-			size--;
-			return;
-		}
-		ListElement *temp = head->next;
-		while(temp->next != NULL)
-		{
-			if (temp->str == str)
-			{
-				temp->next->prev = temp->prev;
-				temp->prev->next = temp->next;
-				delete temp;
-				size--;
-				return;
-			}
-			temp = temp->next;
-		}
-		if (tail->str == str)
-		{
-			ListElement *toDel = tail;
-			tail = tail->prev;
-			tail->next = NULL;
-			size--;
-			delete toDel;
-			return;
-		}
-	}
-
-	else if (size == 1)
-	{
-		delete head;
-		size--;
-		return;
-	}
-	else
-		throw string("No such word");
+    if (size >= 2)
+    {
+        if (head->getStr() == str)
+        {
+            ListElement *toDel = head;
+            head = head->getNext();
+            head->setPrev(NULL);
+            toDel->setNext(NULL);
+            delete toDel;
+            size--;
+            return;
+        }
+        ListElement *temp = head->getNext();
+        while(temp->getNext() != NULL)
+        {
+            if (temp->getStr() == str)
+            {
+                temp->getNext()->setPrev(temp->getPrev());
+                temp->getPrev()->setNext(temp->getNext());
+                delete temp;
+                size--;
+                return;
+            }
+            temp = temp->getNext();
+        }
+        if (tail->getStr() == str)
+        {
+            ListElement *toDel = tail;
+            tail = tail->getPrev();
+            tail->setNext(NULL);
+            size--;
+            delete toDel;
+            return;
+        }
+        throw string("No such word!");
+    }
+    else if (size == 1)
+    {
+        if (head->getStr() == str)
+        {
+            delete head;
+            size--;
+            return;
+        }
+        throw string("No such word!");
+    }
+    else
+        throw string("List is Empty!");
 }
 
 bool List::exists(string str)
 {
-	ListElement *temp = head;
-	while (temp->next != NULL)
-	{
-		if (str == temp->str)
-		{
-			return true;
-		}
-		else
-			temp = temp->next;
-	}
-	return temp->str == str;
+    ListElement *temp = head;
+    while (temp->getNext() != NULL)
+    {
+        if (str == temp->getStr())
+        {
+            return true;
+        }
+        else
+            temp = temp->getNext();
+    }
+    return temp->getStr() == str;
+}
+
+ListElement* List::getHead()
+{
+	return head;
+}
+
+void List:: setHead(ListElement *tmp)
+{
+	head = tmp;
+}
+
+ListElement* List:: getTail()
+{
+	return tail;
+}
+
+void  List:: setTail(ListElement *tmp)
+{
+	tail = tmp;
+}
+
+unsigned int List:: getSize()
+{
+	return size;
+}
+
+void List :: setSize(unsigned int newSize)
+{
+	size = newSize;
 }
