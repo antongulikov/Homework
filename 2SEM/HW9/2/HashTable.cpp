@@ -15,7 +15,7 @@ HashTable::HashTable(unsigned int size, HashFunction *hashFunct) :
 void HashTable::createTable()
 {
     table = new List *[hTsize];
-    for (unsigned int i = 0; i < hTsize; i++)
+    for (int i = 0; i < hTsize; i++)
     {
         table[i] = NULL;
     }
@@ -110,7 +110,9 @@ void HashTable::rebuildTable(unsigned int newSize, HashFunction *hashFunct)
             add(temp->getStr(), temp->getElemCounter());
         }
     }
-    delete oldTable;
+    for (int i = 0; i < hTsize; i++)
+		delete oldTable[i];
+    delete[] oldTable;
 }
 
 void HashTable::checkOverFlow()
@@ -121,7 +123,7 @@ void HashTable::checkOverFlow()
 
 HashTable::~HashTable()
 {
-    for (unsigned int i = 0; i < hTsize; i++)
+    for (int i = 0; i < hTsize; i++)
     {
         if (table[i] != NULL)
             delete table[i];

@@ -11,7 +11,9 @@ List::List() :
 List::~List()
 {
     if (size > 0)
-        delete head;
+    {
+		delete head;
+    }
 }
 
 bool List::isEmpty()

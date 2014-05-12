@@ -64,7 +64,7 @@ private slots:
         unsigned int oldkey1 = table->getHash()->hash("one") % table->getHTsize();
         unsigned int oldkey2 = table->getHash()->hash("two") % table->getHTsize();
         unsigned int oldkey3 = table->getHash()->hash("three") % table->getHTsize();
-        xhash = new XorHash;
+        
         table->rebuildTable(100, xhash);
         unsigned int key1 = table->getHash()->hash("one") % table->getHTsize();
         QVERIFY(table->getTableElement(key1)->getHead()->getStr() == "one");
