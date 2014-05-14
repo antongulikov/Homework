@@ -130,7 +130,5 @@ private slots:
     void cleanup()
     {
         delete table;
-        delete shash;
-        delete xhash;
     }
 };
