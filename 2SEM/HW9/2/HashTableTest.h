@@ -11,15 +11,13 @@ class HashTableTest : public QObject
     Q_OBJECT
 private:
     HashTable *table;
-    HashFunction *shash;
-    HashFunction *xhash;
+    HashFunction *shash;    
     static const unsigned int size = 100;
 private slots:
 
     void init()
     {
-        shash = new SumHash;
-        xhash = new XorHash;
+        shash = new SumHash;        
         table = new HashTable(size, shash);
     }
     
@@ -58,6 +56,8 @@ private slots:
     
     void rebuildTableTest()
     {
+    	HashFunction *xhash;
+    	xhash = new XorHash;
         table->add("one", 1);
         table->add("two", 1);
         table->add("three", 1);
@@ -72,7 +72,7 @@ private slots:
         QVERIFY(table->getTableElement(key2)->getHead()->getStr() == "two");
         unsigned int key3 = table->getHash()->hash("three") % table->getHTsize();
         QVERIFY(table->getTableElement(key3)->getHead()->getStr() == "three");
-        QVERIFY((key1 != oldkey1 || key2 != oldkey2 || key3 != oldkey3) == true);
+        QVERIFY((key1 != oldkey1 || key2 != oldkey2 || key3 != oldkey3) == true);        
     }
     
     void removeTest()

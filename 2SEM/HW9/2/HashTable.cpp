@@ -96,6 +96,7 @@ void HashTable::rebuildTable(unsigned int newSize, HashFunction *hashFunct)
     maxCollLength = 0;
     LoadFactor = 0;
     elemQuantity = 0;
+    delete hash;
     hash = hashFunct;
     for (unsigned int i = 0; i < oldSize; i++)
     {
