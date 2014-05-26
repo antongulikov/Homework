@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT += gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -20,3 +21,5 @@ HEADERS  += gameboard.h \
     weapons.h
 
 FORMS    += gameboard.ui
+
+OTHER_FILES +=

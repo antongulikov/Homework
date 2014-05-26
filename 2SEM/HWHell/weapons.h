@@ -15,14 +15,13 @@
 using namespace std;
 
 
-class Weapons : public QGraphicsItem, public QObject
-{
-
-Q_OBJECT
-
+class Weapons :  public QObject, public QGraphicsItem 
+{ Q_OBJECT
+  Q_INTERFACES(QGraphicsItem)
+  
 public:
 	Weapons(int widht, int height);	
-	~Weapons(){}
+	~Weapons();
 	
 protected:
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
@@ -34,6 +33,9 @@ protected:
 private slots:
 	void moveShoot();
 	void restart(bool fl);
+signals:
+	void endGame(bool fl);	
+	void winner(int player);
 	
 private:
 	int width;
@@ -44,12 +46,14 @@ private:
 	void makeShoot(int player);
 	void paintShoot(QPainter *painter, int pos);
 	void paintRect(QPainter *painter, int pos);
+	void paintText(QPainter *painter, QString message);	
 	int timeCount;
 	int speed[2];
-	QTimer shootTimer;
+	QTimer *shootTimer;
 	QRect players[2];
 	QRect shotRect() const;
 	void changeSpeed(int value);
+	bool finished;
 };
 
 
