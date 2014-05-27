@@ -8,6 +8,8 @@ networkSession(0),
 tcpServer(0),
 clientSocket(0),
 messageSize(0),
+scene(0),
+weapons(0),
 isGame(false)
 {
 	ui->setupUi(this);	

@@ -6,6 +6,10 @@ QWidget(parent),
 ui(new Ui::GameBoard),
 networkSession(0),	
 messageSize(0),
+serverSocket(0),
+weapons(0),
+scene(0),
+tcpServer(0),
 isConnected(false)
 {
 	ui->setupUi(this);	
