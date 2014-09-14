@@ -1,1 +1,1 @@
-Диаграмма состояний для микроволновки: https://creately.com/diagram/i02wp5kx1/qfbTRW2BEBkBbVyajGh8vrMVDK4%3D
+State Chart Diagram for microwave: https://creately.com/diagram/i02wp5kx1/qfbTRW2BEBkBbVyajGh8vrMVDK4%3D
