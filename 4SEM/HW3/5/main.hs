@@ -1,11 +1,13 @@
+helpF :: [Char] -> [Char] -> Bool
+helpF [] x = (length x) == 0
+helpF ('(' : xs) y = helpF xs ('(' : y)
+helpF ('[' : xs) y = helpF xs ('[' : y)
+helpF ('{' : xs) y = helpF xs ('{' : y)
+helpF (')' : xs) ('(' : ys) = helpF xs ys
+helpF ('}' : xs) ('{' : ys) = helpF xs ys
+helpF (']' : xs) ('[' : ys) = helpF xs ys
+helpF _ _ = False
+
 isCorrect :: [Char] -> Bool
-isCorrect x = let
-               correct :: [Char] -> Integer -> Bool	 
-               correct (x:xs) balance = case (balance < 0) of
-               	                        (True) -> False
-               	                        (False) -> correct xs (balance + sign x)
-               	                        where sign x = if (x == '(') then 1 else -1
-               correct [] balance = (balance == 0)
-            in correct x 0
-main = print (isCorrect "(((())()()))")
+isCorrect x = helpF x []
                 
