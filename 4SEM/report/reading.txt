@@ -1,0 +1,8 @@
+http://research.microsoft.com/en-us/um/people/simonpj/papers/parallel/AFP08-notes.pdf
+http://chimera.labs.oreilly.com/books/1230000000929/
+https://wiki.haskell.org/Parallel
+https://wiki.haskell.org/Concurrency
+http://community.haskell.org/~simonmar/par-tutorial.pdf
+https://github.com/simonmar/par-tutorial
+http://www.youtube.com/watch?v=lqG3mURwUxo
+http://www.youtube.com/watch?v=73B1uc3xkvo
