@@ -1,3 +1,5 @@
+import System.Directory
+import System.Environment
 import Control.Monad
 import Data.List
 import Data.Int
@@ -108,19 +110,24 @@ commandFlow l = do
 				5 -> do
 			    		putStrLn "Type input file"
 			    		input <- getLine
-			    		inputData <- readFile input
-			    		let len = length $ lines inputData
-			    		if (len `mod` 2 > 0)
-			    			then do
-			    					putStrLn "Error input data"
-			    					help
-			    					commandFlow l
-			    			else
-			    				pass
-			    		let lq = getList (lines inputData)
-			    		help
-			    		commandFlow lq
-
+			    		fileExists <- doesFileExist input
+			    		if fileExists then do
+											inputData <- readFile input
+											let len = length $ lines inputData
+											if (len `mod` 2 > 0)
+								    			then do
+							    					putStrLn "Error input data"
+							    					help
+			    									commandFlow l
+								    			else
+								    				pass
+											let lq = getList (lines inputData)
+											help
+											commandFlow lq
+			    						else do
+												putStrLn "File doesn't exist"
+												help
+												commandFlow l
 			return ()
 
 main = do
